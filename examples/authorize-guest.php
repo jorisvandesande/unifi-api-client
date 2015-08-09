@@ -1,0 +1,35 @@
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+$config = require 'config.php';
+
+use JVDS\UnifiApiClient\Client;
+use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Exception\RequestException;
+
+$apiClient = new Client(new HttpClient(['base_uri' => $config['base_uri']]));
+
+try {
+
+    // login to the unifi controller API
+    $apiClient->login($config['username'], $config['password']);
+
+    // Authorize guest with mac address 01:01:01:01:01:01 for 60 minutes
+    // You need a user with full access to the unifi controller for this call!
+    $responseBody = $apiClient->authorizeGuest($config['site'], '01:01:01:01:01:01', 60);
+
+    print_r(json_decode($responseBody));
+
+    $apiClient->logout();
+
+} catch (RequestException $e) {
+    echo $e->getMessage() . PHP_EOL;
+
+    echo '----- Request ------' . PHP_EOL;
+    echo $e->getRequest()->getBody()->getContents();
+    echo PHP_EOL;
+
+    echo '----- Response ------' . PHP_EOL;
+    echo $e->hasResponse() ? $e->getResponse()->getBody()->getContents() : '- no response -';
+    echo PHP_EOL;
+}

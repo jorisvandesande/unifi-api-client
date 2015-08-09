@@ -1,0 +1,32 @@
+{
+    "name": "jorisvandesande/unifi-api-client",
+    "type": "library",
+    "description": "Unifi API Client can be used to connect to the API of your Ubiquiti Unifi Controller",
+    "keywords": ["unifi", "ubiquiti", "api client", "api", "unifi controller", "client"],
+    "homepage": "https://github.com/jorisvandesande/unifi-api-client",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joris van de Sande",
+            "email": "joris@vandesande.link",
+            "homepage": "https://github.com/jorisvandesande"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "JVDS\\UnifiApiClient\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "archive": {
+        "exclude": ["/examples"]
+    }
+}

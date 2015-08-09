@@ -1,0 +1,4 @@
+.idea
+/examples/config.php
+/composer.lock
+/vendor

@@ -32,7 +32,7 @@ $apiClient->statistics('default');
 
 // or call any API url via the get and post methods:
 $apiClient->get('/api/self');
-$apiClient->post('/api/s/default/cmd/stamgr', ['cmd' => 'block-sta', 'mac':'01:01:01:01:01:01'])
+$apiClient->post('/api/s/default/cmd/stamgr', ['cmd' => 'block-sta', 'mac' => '01:01:01:01:01:01']);
 
 // logout
 $apiClient->login('your_username', 'your_password');

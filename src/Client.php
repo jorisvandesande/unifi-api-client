@@ -78,7 +78,7 @@ class Client
     {
         $this->post(
             '/api/login',
-            ['username' => $username, 'password' => $password, 'strict' => true]
+            ['username' => $username, 'password' => $password]
         );
     }
 

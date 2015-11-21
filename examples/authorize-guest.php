@@ -14,11 +14,12 @@ try {
     // login to the unifi controller API
     $apiClient->login($config['username'], $config['password']);
 
+
     // Authorize guest with mac address 01:01:01:01:01:01 for 60 minutes
     // You need a user with full access to the unifi controller for this call!
-    $responseBody = $apiClient->authorizeGuest($config['site'], '01:01:01:01:01:01', 60);
+    $response = $apiClient->authorizeGuest($config['site'], '01:01:01:01:01:01', 60);
 
-    print_r(json_decode($responseBody));
+    print_r(json_decode($response->getBody(), true));
 
     $apiClient->logout();
 
@@ -26,7 +27,8 @@ try {
     echo $e->getMessage() . PHP_EOL;
 
     echo '----- Request ------' . PHP_EOL;
-    echo $e->getRequest()->getBody()->getContents();
+
+    echo (string) $e->getRequest()->getBody();
     echo PHP_EOL;
 
     echo '----- Response ------' . PHP_EOL;

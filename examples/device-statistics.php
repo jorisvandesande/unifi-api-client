@@ -28,7 +28,8 @@ try {
     echo $e->getMessage() . PHP_EOL;
 
     echo '----- Request ------' . PHP_EOL;
-    echo $e->getRequest()->getBody()->getContents();
+
+    echo (string) $e->getRequest()->getBody();
     echo PHP_EOL;
 
     echo '----- Response ------' . PHP_EOL;

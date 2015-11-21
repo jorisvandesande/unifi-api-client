@@ -16,9 +16,9 @@ try {
 
     // Revoke authorization for guest with mac address 01:01:01:01:01:01
     // You need a user with full access to the unifi controller for this call!
-    $responseBody = $apiClient->unauthorizeGuest($config['site'], '01:01:01:01:01:01');
+    $response = $apiClient->unauthorizeGuest($config['site'], '01:01:01:01:01:01');
 
-    print_r(json_decode($responseBody));
+    print_r(json_decode($response->getBody(), true));
 
     $apiClient->logout();
 
@@ -26,7 +26,8 @@ try {
     echo $e->getMessage() . PHP_EOL;
 
     echo '----- Request ------' . PHP_EOL;
-    echo $e->getRequest()->getBody()->getContents();
+
+    echo (string) $e->getRequest()->getBody();
     echo PHP_EOL;
 
     echo '----- Response ------' . PHP_EOL;

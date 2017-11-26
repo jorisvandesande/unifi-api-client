@@ -22,8 +22,8 @@ try {
 
     $data = json_decode($responseBody, true);
     echo "Latency: ".$data['data'][2]['latency']." ms\n";
-    echo "RX     : ".round(($data['data'][2]['rx_bytes-r']/100/1024), 2)." Mb/s\n";
-    echo "TX     : ".round(($data['data'][2]['tx_bytes-r']/100/1024), 2)." Mb/s\n";
+    echo "RX     : ".round(($data['data'][2]['rx_bytes-r']/1024/1024*8), 2)." Mb/s\n";
+    echo "TX     : ".round(($data['data'][2]['tx_bytes-r']/1024/1024*8), 2)." Mb/s\n";
     $apiClient->logout();
 
 } catch (RequestException $e) {

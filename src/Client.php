@@ -96,6 +96,17 @@ class Client
      * @return ResponseInterface
      * @throws GuzzleException
      */
+    public function health($site)
+    {
+        return $this->get('/api/s/' . $site . '/stat/health');
+    }
+
+    /**
+     * @param string $site
+     *
+     * @return ResponseInterface
+     * @throws GuzzleException
+     */
     public function statistics($site)
     {
         return $this->get('/api/s/' . $site . '/stat/sta');
